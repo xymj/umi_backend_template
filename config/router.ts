@@ -1,3 +1,5 @@
+import { layout } from "@/app";
+
 const routes = [
   {
     path: '/',
@@ -11,7 +13,20 @@ const routes = [
   {
     name: '权限演示',
     path: '/access',
-    component: './Access',
+    // component: './Access',
+    routes: [{
+      name: '访问 Admin',
+      path: '/access/admin',
+      component: './Access',
+    },{
+      name: '访问 Customer',
+      path: '/access/customer',
+      component: './Access/CustomerAccess',
+    },{
+      name: '访问 Default',
+      path: '/access/default',
+      component: './Access/DefaultAccess',
+    }],
   },
   {
     name: ' CRUD 示例',
@@ -28,6 +43,17 @@ const routes = [
         icon: 'TeamOutlined',
         path: '/customer-manage/customer-list',
         component: './CustomerManage/CustomerList',
+      },
+      {
+        name: ' 客户编辑',
+        icon: 'TeamOutlined',
+        path: '/customer-manage/customer/edit/:id',
+        component: './CustomerManage/Customer/Edit',
+        menu: {
+          // 设置为 false 使菜单中不显示此项
+          hideInMenu: true,
+        },
+        // layout: false 
       },
       {
         name: ' 客户认证',
